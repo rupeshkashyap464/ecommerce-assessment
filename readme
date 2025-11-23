@@ -1,0 +1,214 @@
+Absolutely — here is your **README.md in clean, copy-paste format**, with **no code boxes**, **no explanation**, **no backticks**, and **no markup errors**.
+
+You can **copy this entire message directly into your README.md file** exactly as it is.
+
+---
+
+# Fullstack Shopping Cart – Hiring Assessment
+
+This project is a small full-stack e-commerce shopping portal built for a hiring assessment.
+
+Flow:
+User → Login → View Items → Add Items to Cart → Checkout → Order
+
+The backend is implemented in Go (Gin framework) with JSON file storage.
+The frontend is a React application with a premium-style shopping UI.
+
+---
+
+## Tech Stack
+
+Backend
+• Go (Golang)
+• Gin Web Framework
+• JSON file database (db.json)
+• Token-based authentication
+• CORS enabled
+
+Frontend
+• React (Create React App)
+• JavaScript ES6
+• Custom CSS for premium UI
+• Fetch API for backend communication
+
+---
+
+## Project Structure
+
+ecommerce-assessment/
+├── backend/
+│   ├── main.go
+│   ├── handlers.go
+│   ├── models.go
+│   ├── store.go
+│   ├── middleware.go
+│   └── go.mod
+└── frontend/
+├── src/
+│   ├── App.js
+│   ├── App.css
+│   ├── Login.js
+│   └── Items.js
+├── public/
+├── package.json
+└── .env
+
+---
+
+## How to Run the Project
+
+### Backend (Go)
+
+1. Open terminal
+2. Navigate to backend folder
+   cd backend
+3. Install dependencies
+   go mod tidy
+4. Run server
+   go run .
+5. Backend runs at:
+   [http://localhost:8080](http://localhost:8080)
+
+A db.json file will be created automatically.
+
+---
+
+## Frontend (React)
+
+1. Open a new terminal
+2. Navigate to frontend folder
+   cd frontend
+3. Install dependencies
+   npm install
+4. Start development server
+   npm start
+
+Frontend runs at:
+[http://localhost:3000](http://localhost:3000) or [http://localhost:3001](http://localhost:3001)
+
+Note: ESLint is disabled for local development through .env
+DISABLE_ESLINT_PLUGIN=true
+
+---
+
+## User Flow (As Required in Assessment)
+
+1. User opens login page
+2. Enters username and password
+3. On success → redirected to Items page
+4. Items list displayed with Add to Cart buttons
+5. Top menu shows:
+   • Checkout
+   • Cart
+   • Order History
+   • Logo + Cart badge
+6. Cart button → shows cart items (cart_id, item_id) in alert
+7. Order History button → shows order IDs in alert
+8. Checkout converts the cart to an order
+9. Success alert displayed
+
+---
+
+## API Endpoints
+
+### Users
+
+POST /users
+Creates a new user
+Body: { "username": "rupesh", "password": "1234" }
+
+POST /users/login
+Returns token
+Body: { "username": "rupesh", "password": "1234" }
+
+GET /users
+Lists all users
+
+---
+
+### Items
+
+POST /items
+Creates new item
+
+GET /items
+Lists all items
+Used on Items screen
+
+---
+
+### Carts (Token Required)
+
+POST /carts/
+Creates cart or adds item to cart
+Header: Authorization: Bearer <token>
+
+GET /carts
+Lists all carts
+Used in Cart alert
+
+---
+
+### Orders (Token Required)
+
+POST /orders/
+Converts cart into order
+Body: { "cart_id": 1 }
+
+GET /orders
+Lists all orders
+Used in Order History alert
+
+---
+
+## Authentication
+
+• User logs in and receives a token
+• Token is required for cart and order operations
+• Only one active token per user
+
+---
+
+## Frontend Screens
+
+Login Screen
+• Username
+• Password
+• Login button
+• Invalid credentials → alert
+
+Items Screen
+• Items listed as cards
+• Add to Cart buttons
+• Checkout, Cart, Order History buttons
+• Premium UI with gradients, shadows, responsive cards
+• Cart badge shows number of items
+
+Alerts
+• Cart JSON data
+• Order IDs
+• Order successful
+
+---
+
+## Data Storage
+
+• All data stored in db.json
+• Updated automatically on every change
+• No SQL databases required
+
+---
+
+## Assignment Requirements Covered
+
+✔ Create user
+✔ Login with token
+✔ Create/list items
+✔ Create cart + add items
+✔ Convert cart to order
+✔ List orders
+✔ React UI with login + items + cart + order history
+✔ Alerts for messages as required
+✔ Clean and structured code
+✔ Full working flow end-to-end
+
